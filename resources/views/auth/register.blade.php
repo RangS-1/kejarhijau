@@ -118,50 +118,46 @@
         </div>
 
         <!-- ================================================================= -->
-        <!-- SEBELAH KANAN: GAMBAR / VISUAL (HALAMAN REGISTER)                  -->
+        <!-- SEBELAH KANAN: GAMBAR COVER FULL (HALAMAN REGISTER)                -->
         <!-- ================================================================= -->
-        <div class="relative hidden lg:flex flex-col justify-between p-12 bg-slate-950 text-white overflow-hidden border-l border-slate-800">
-            <!-- Background Decorative Glow (Opsional) -->
+        <div class="relative hidden lg:block bg-slate-950 text-white overflow-hidden border-l border-slate-800">
+            <!-- ================================================================= -->
+            <!-- PETUNJUK UNTUK MENEMPELKAN / MENGGANTI GAMBAR:                    -->
+            <!-- Tag <img> di bawah ini dibuat absolut & object-cover sehingga     -->
+            <!-- MENUTUPI 100% SELURUH AREA KANAN (Edge-to-Edge tanpa sela).       -->
+            <!-- Ganti src="..." sesuai dengan path gambar Anda.                   -->
+            <!-- ================================================================= -->
+            <img 
+                src="{{ asset('images/logres-bg.png') }}" 
+                alt="Register Background Visual" 
+                class="absolute inset-0 w-full h-full object-cover z-0"
+                onerror="this.style.display='none'"
+            />
+
+            <!-- Overlay Gradien Tipis (Membuat teks & logo tetap terlihat kontras & jelas) -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-slate-950/40 z-10 pointer-events-none"></div>
+
+            <!-- Decorative Glow Fallback jika gambar belum dimuat -->
             <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-600/20 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-900/30 rounded-full blur-3xl pointer-events-none"></div>
 
-            <!-- Top Brand Logo / Header Kanan -->
-            <div class="relative z-10 flex items-center justify-end gap-3">
-                <a href="/" class="flex items-center gap-3">
-                    <span class="text-xl font-bold tracking-tight text-white">KejarHijau</span>
-                    <x-application-logo class="w-10 h-10 fill-current text-emerald-400" />
-                </a>
-            </div>
-
-            <!-- AREA GAMBAR (PLACEHOLDER) -->
-            <!-- ----------------------------------------------------------------- -->
-            <!-- PETUNJUK UNTUK MENEMPELKAN GAMBAR:                                -->
-            <!-- Ganti bagian di dalam container <div> di bawah ini dengan tag     -->
-            <!-- <img> milik Anda, contoh:                                         -->
-            <!-- <img src="{{ asset('images/register-bg.png') }}" alt="Register"   -->
-            <!--      class="w-full h-full object-cover rounded-xl" />             -->
-            <!-- ----------------------------------------------------------------- -->
-            <div class="relative z-10 my-auto py-8">
-                <!-- BLOK PLACEHOLDER GAMBAR -->
-                <div class="w-full max-w-lg mx-auto min-h-[360px] border-2 border-dashed border-slate-700/80 rounded-2xl bg-slate-900/60 backdrop-blur-sm flex flex-col items-center justify-center p-8 text-center transition hover:border-emerald-500/50">
-                    <div class="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 shadow-inner">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-slate-200 mb-1">Area Gambar Register</h3>
-                    <p class="text-sm text-slate-400 max-w-xs mb-3">
-                        Bagian ini disiapkan untuk gambar visual pendaftaran.
-                    </p>
-                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-slate-800 text-emerald-400 border border-slate-700">
-                        &lt;img src="..." /&gt;
-                    </span>
+            <!-- Konten di Atas Gambar (Logo & Copyright) -->
+            <div class="relative z-20 flex flex-col justify-between h-full p-12">
+                <!-- Top Brand Logo / Header Kanan -->
+                <div class="flex items-center justify-end gap-3">
+                    <a href="/" class="flex items-center gap-3 group">
+                        <span class="text-xl font-bold tracking-tight text-white drop-shadow-md">KejarHijau</span>
+                        <x-application-logo class="w-10 h-10 fill-current text-emerald-400 group-hover:scale-105 transition-transform" />
+                    </a>
                 </div>
-            </div>
 
-            <!-- Bottom Right Footer Info -->
-            <div class="relative z-10 text-right text-xs text-slate-500">
-                &copy; {{ date('Y') }} KejarHijau. All rights reserved.
+                <!-- Middle Area (Kosong agar gambar terlihat penuh) -->
+                <div class="my-auto"></div>
+
+                <!-- Bottom Right Footer Info -->
+                <div class="text-right text-xs text-slate-300/80 drop-shadow-md">
+                    &copy; {{ date('Y') }} KejarHijau. All rights reserved.
+                </div>
             </div>
         </div>
     </div>
